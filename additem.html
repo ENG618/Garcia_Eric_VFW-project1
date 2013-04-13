@@ -24,10 +24,24 @@
 	<body>
 		<h1>New Memory</h1>
 		<form action="#" method="post">
+			<!-- I chose to use a fieldset even though I don't have different "categories" of information, to make it seem like the Memory was encapsulated and saved in a vault -->
+			<fieldset>
+				<legend>Important Memory</legend>
 			<ul>
-				<li><lable for=occation>Occation</lable><input type="text" id="occation"/></li>
+				<li><lable for="occation">Occasion</lable><input type="text" id="occation" /></li>
+				<li><label for="date">Date</label><input type="date" id="date" /></li>
+				<li><label>Importance</label><input type="range" value="importance" id="importance" /></li>
+				<li>Memory shared with?
+					<ul>
+						<li><input type="checkbox" checked value="Family" id="family" /><label for="family">Family</label>
+						<li><input type="checkbox" value="Friends" id="friends" /><label for="friends">Friends</label>
+						<li><input type="checkbox" value="Co-workers" id="co-workers" /><label for="co-workers">Co-workers</label>
+					</ul>
+				</li>
+				<li><label for="description">Description</label></li><textarea id="description">Describe this occasion here...</textarea></li>
+				<li type="hidden" value="someValue"></li>
 			</ul>
-			
+			</fieldset>
 		</form>
 	</body>
 </html>

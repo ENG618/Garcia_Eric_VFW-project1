@@ -18,24 +18,29 @@
 		<title>Memory Vault</title>
 		<!-- Call CSS File -->
 		<link href="css/style.css" rel="stylesheet" type="text/css" />
-		<!-- Call JavaScript File -->
-		<script src="js/main.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<h1>New Memory</h1>
-		<form action="#" method="post">
+		<a href="#" id="displayData">Display Data</a>
+		<a href="#" id="clearData">Clear Stored Data</a>
+		<form action="#" method="post" id='form'>
 				<legend>Important Memory</legend>
 			<ul>
-				<li><label for="occation">Occasion</label>		<input type="text" id="occation" /></li>
-				<li><label for="date">Date</label>				<input type="date" id="date" /></li>
-				<li><label for="importance">Importance</label>	<input type="range"id="importance" /></li>
+				<li><label for="occasion">Occasion</label><input type="text" id="occasion" /></li>
+				<li><label for="date">Date</label><input type="date" id="date" /></li>
+				<li><label for="importance">Importance</label><input type="range"id="importance" /></li>
 				<li>Memory shared with?
 					<ul>
-						<li><input type="checkbox" checked value="Family" id="family" /><label for="family">Family</label></li>
-						<li><input type="checkbox" value="Significant other" id="significant other" /><label for="significant other">Significant other</label></li>
-						<li><input type="checkbox" value="Friends" id="friends" /><label for="friends">Friends</label></li>
-						<li><input type="checkbox" value="Co-workers" id="co-workers" /><label for="co-workers">Co-workers</label></li>
-						<li><input type="checkbox" value="Other" id="other" /><label for="other">Other</label></li>
+						<li><input type="checkbox" checked value="Family" id="family" name='sharedWith' />
+							<label for="family">Family</label></li>
+						<li><input type="checkbox" value="Significant other" id="significantOther" name='sharedWith' />
+							<label for="significant other">Significant other</label></li>
+						<li><input type="checkbox" value="Friends" id="friends" name='sharedWith' />
+							<label for="friends">Friends</label></li>
+						<li><input type="checkbox" value="Co-workers" id="co-workers" name='sharedWith' />
+							<label for="co-workers">Co-workers</label></li>
+						<li><input type="checkbox" value="Other" id="other" name='sharedWith' />
+							<label for="other">Other</label></li>
 					</ul>
 				</li>
 				<li><label for="description">Description</label></li><textarea id="description">Describe this occasion here...</textarea>
@@ -43,5 +48,7 @@
 			</ul>
 			<input type="submit" value="Store this Memory!!"/>
 		</form>
+		<!-- Call JavaScript File -->
+		<script src="js/main.js" type="text/javascript"></script>
 	</body>
 </html>

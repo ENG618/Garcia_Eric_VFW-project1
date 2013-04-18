@@ -7,21 +7,21 @@ Project2 add style
 html{
 	font-family: helvetica, times, arial;
 	font-size: 14px;
-	background-color: #999977;
+	background-color: #8c7f56;
 }
 
 h1{
 	width: 250px;
 	text-align: center;
-	color: #FFFFDD;
+	color: #fff9f1;
 	margin: 5px;
 	margin-top: 20px;
 	padding: 5px;
-	border: 1px solid gray
+	border: 1px solid #fff9f1;
 }
 
 body{
-	border: 1px solid gray;
+	border: 1px solid #fff9f1;
 }
 
 legend{
@@ -47,5 +47,5 @@ p{
 
 input{
 	font-weight: bold;
-	background-color: #FFFFDD;
+	background-color: #fff9f1;
 }

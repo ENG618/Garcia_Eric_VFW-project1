@@ -4,33 +4,43 @@
 
 window.addEventListener('DOMContentLoaded', function(){
 
+	//getElementById Function
+	function $(x){
+		var elementRequested = document.getElementById(x);
+		return elementRequested;
+	};
+/*
 	//Variables
 	var occasion = document.getElementById('occasion');
 	var date = document.getElementById('date');
 	var importance = document.getElementById('importance');
 	var sharedWith = document.getElementById('form').sharedWith;
 	var description = document.getElementById('description');
+*/
+	
 
-	//getElementById Function
-	function getElement(x){
-		var elementRequested = document.getElementById(x);
-		return elementRequested
-	};
-
+	//Functions
 	var saveData = function(){
-		localStorage.setItem("Occasion", occasion.value);
+		localStorage.setItem('Occasion', occasion.value);
 	};
 
-	var restoreData = function(){
-		var occasionKey = localStorage.key('Occasion');
+	var loadData = function(){
+		var occasionKey = $('Occasion');
 		var occasionValue = localStorage.getItem(occasionKey);
-		occasion.value = occasionValue
+		occasion.value = occasionValue;
 	};
 
-	occasion.addEventListener("blur", saveData);
+	//Display data, Clear data, submit links
+	var displaySavedData = $('displaySavedData');
+	var clearSavedData = $('clearData');
+	var save = $('save');
+	displaySavedData.addEventListener('click', displayData);
+	clearSavedData.addEventListener('click', clearData);
+	save.addEventListener('click', saveForm)
 
 
-	restoreData();
+
+	loadData();
 
 
  

@@ -4,15 +4,8 @@
 
 window.addEventListener('DOMContentLoaded', function(){
 
-	/*
 	//Variables
-	var occasion = document.getElementById('occasion');
-	var date = document.getElementById('date');
-	var importance = document.getElementById('importance');
-	var sharedWith = document.getElementById('form').sharedWith;
-	var description = document.getElementById('description');
-	*/
-	// var submit = document.getElementById('save');
+	var eventMood = ['--Choose Mood--', 'Forgettable', 'Fun', 'Memorable', 'Sad'];
 
 	// getElementById Function
 	function $(x){
@@ -20,24 +13,40 @@ window.addEventListener('DOMContentLoaded', function(){
 		return elementRequested;
 	};
 
-
-	
-
-	// Functions
-	var saveData = function(){
-		localStorage.setItem('Occasion', occasion.value);
-	};
-
+	// Load Data Function
 	var loadData = function(){
 		var occasionKey = $('Occasion');
 		var occasionValue = localStorage.getItem(occasionKey);
 		occasion.value = occasionValue;
 	};
+
+	// Clear Local Storage Function
 	var clearData = function(){
 		localStorage.clear;
 	};
-	// var saveForm = function(){};
 
+	// Create mood field element and populate with options
+	function creatMoodField(){
+		var formTag = document.getElementsByTagName('form'),
+			moodLi = $('addHTML'),
+			makeMood = document.createElement('select');
+			makeMood.setAttribute('id', 'test');
+		for (var i=0; i<eventMood.length; i++){
+			var makeOption = document.createElement('option');
+			var optText = eventMood[i];
+			makeOption.setAttribute('value', optText);
+			makeOption.innerHTML = optText;
+			makeMood.appendChild(makeOption);
+		}
+		moodLi.appendChild(makeMood);
+	}
+creatMoodField();
+	// Save Data Functions (Store memory button)
+	var saveData = function(){
+		localStorage.setItem('Occasion', occasion.value);
+	};
+
+	// var saveForm = function(){};
 
 	// Display data, Clear data, submit links
 	var loadSavedData = $('loadSavedData');

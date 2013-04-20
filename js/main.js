@@ -5,23 +5,46 @@
 window.addEventListener('DOMContentLoaded', function(){
 
 	//Variables
-	var eventMood = ['--Choose Mood--', 'Forgettable', 'Fun', 'Memorable', 'Sad'],
-		sharedWith;
+	var eventMood = ['--Choose Mood--', 'Forgettable', 'Fun', 'Memorable', 'Sad'];
+	var	sharedWith;
 
 	// getElementById Function
+	// Done
 	function $(x){
 		var elementRequested = document.getElementById(x);
 		return elementRequested;
 	};
 
 	// Load Data Function
+	// Done
 	var loadData = function(){
-		var occasionKey = $('Occasion');
-		var occasionValue = localStorage.getItem(occasionKey);
-		occasion.value = occasionValue;
+		// Load from local storage
+		var makeDiv = document.createElement('div');
+		makeDiv.setAttribute(id, 'memories');
+		var makeList = document.createElement('ul');
+		makeDiv.appendChild(makeList);
+		document.body.appendChild(makeDiv);
+		for (var i=0; i<localStorage.length; i++){
+			var makeLi = document.createElement('li');
+			makeList.appendChild(makeLi);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			// Convert sting from local storage to object
+			var obj = JSON.parse(value);
+			// Creating another list for each entry
+			var makeSubList = document.createElement('ul');
+			makeLi.appendChild(makeSubList);
+			for (var n in obj){
+				var makeSubLi = document.createElement('li');
+				makeSubList.appendChild(makeSubLi);
+				var optSubText = obj[n][0]+' '+obj[n][1];
+				makeSubLi.innerHTML = optSubText;
+			};
+		};
 	};
 
 	//Check-box array
+	// Done?
 	var getCheckedValues = function(){
 		var checkboxes = $('form').sharedWith,
 			checkedValues = [];
@@ -30,6 +53,8 @@ window.addEventListener('DOMContentLoaded', function(){
 				checkedValues.push(checkboxes[i].value);
 			};
 		};
+		// Not sure if this is correct?!?!
+		return checkedValues
 	};
 	
 	// Clear Local Storage Function
@@ -59,26 +84,24 @@ window.addEventListener('DOMContentLoaded', function(){
 		getCheckedValues();
 		var id 				= Math.floor(Math.random()*12345678);
 		var item 			= {};
-		item.occasion 		= ['Occasion', $(occasion).value];
-		item.date 			= ['Date', $(date).value];
-		item.importance 	= ['Importance', $(importance).value];
-		item.mood 			= ['Mood', $(addHTML).value];
-		item.sharedWith 	= ['Shared With', checkedValues;
-		item.notes 			= ['Notes', $(notes).value];
+		item.occasion 		= ['Occasion:', $(occasion).value];
+		item.date 			= ['Date:', $(date).value];
+		item.importance 	= ['Importance:', $(importance).value];
+		item.mood 			= ['Mood:', $(addHTML).value];
+		item.sharedWith 	= ['Shared With:', checkedValues];
+		item.notes 			= ['Notes:', $(notes).value];
 		// Save data to local Storage
 		localStorage.setItem(id, JSON.stringify(item));
 		alert('Your memory is safe!!');
 	};
 
-	// var saveForm = function(){};
-
-	// Display data, Clear data, submit links
+	// Display/Clear data & Submit links
 	var loadSavedData = $('loadSavedData');
 	var clearSavedData = $('clearSavedData');
 	var save = $('save');
 	loadSavedData.addEventListener('click', loadData);
 	clearSavedData.addEventListener('click', clearData);
-	save.addEventListener('click', saveForm)
+	save.addEventListener('click', saveForm);
 
 
 

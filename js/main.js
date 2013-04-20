@@ -79,19 +79,35 @@ window.addEventListener('DOMContentLoaded', function(){
 		moodLi.appendChild(makeMood);
 	};
 
+	function toggleControls(x){
+		swithc(x){
+			case 'on':
+				$('form').style.display = 'none';
+				$('clearSavedData').style.display = 'inline';
+				$('loadSavedData').style.display - 'none';
+				$('')
+				break;
+			case 'off':
+
+				break;
+			default:
+				return false;
+		};
+	};
+
 	// Save Data Functions (Store memory button)
 	var saveForm = function(){
 		getCheckedValues();
 		var id 				= Math.floor(Math.random()*12345678);
-		var item 			= {};
-		item.occasion 		= ['Occasion:', $(occasion).value];
-		item.date 			= ['Date:', $(date).value];
-		item.importance 	= ['Importance:', $(importance).value];
-		item.mood 			= ['Mood:', $(addHTML).value];
-		item.sharedWith 	= ['Shared With:', checkedValues];
-		item.notes 			= ['Notes:', $(notes).value];
+		var memory 			= {};
+		memory.occasion 		= ['Occasion:', $(occasion).value];
+		memory.date 			= ['Date:', $(date).value];
+		memory.importance 	= ['Importance:', $(importance).value];
+		memory.mood 			= ['Mood:', $(addHTML).value];
+		memory.including	 	= ['Shared With:', checkedValues];
+		memory.notes 			= ['Notes:', $(notes).value];
 		// Save data to local Storage
-		localStorage.setItem(id, JSON.stringify(item));
+		localStorage.setItem(id, JSON.stringify(memory));
 		alert('Your memory is safe!!');
 	};
 

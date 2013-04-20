@@ -15,15 +15,37 @@ window.addEventListener('DOMContentLoaded', function(){
 		return elementRequested;
 	};
 
+	function toggleNav(x){
+		swithc(x){
+			case 'on':
+				$('form').style.display = 'none';
+				$('clearSavedData').style.display = 'inline';
+				$('loadSavedData').style.display = 'none';
+				$('addNewMemory').style.displa = 'inline';
+				break;
+			case 'off':
+				$('form').style.display = 'block';
+				$('clearSavedData').style.display = 'inline';
+				$('loadSavedData').style.display = 'inline';
+				$('addNewMemory').style.displa = 'none';
+				$('memories').style.display = 'none';
+				break;
+			default:
+				return false;
+		};
+	};
+
 	// Load Data Function
 	// Done
 	var loadData = function(){
+		toggleNav('on');
 		// Load from local storage
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute(id, 'memories');
 		var makeList = document.createElement('ul');
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
+		$('memories').style.display = 'block';
 		for (var i=0; i<localStorage.length; i++){
 			var makeLi = document.createElement('li');
 			makeList.appendChild(makeLi);
@@ -79,30 +101,15 @@ window.addEventListener('DOMContentLoaded', function(){
 		moodLi.appendChild(makeMood);
 	};
 
-	function toggleControls(x){
-		swithc(x){
-			case 'on':
-				$('form').style.display = 'none';
-				$('clearSavedData').style.display = 'inline';
-				$('loadSavedData').style.display - 'none';
-				$('')
-				break;
-			case 'off':
-
-				break;
-			default:
-				return false;
-		};
-	};
 
 	// Save Data Functions (Store memory button)
 	var saveForm = function(){
 		getCheckedValues();
-		var id 				= Math.floor(Math.random()*12345678);
-		var memory 			= {};
+		var id 					= Math.floor(Math.random()*12345678);
+		var memory 				= {};
 		memory.occasion 		= ['Occasion:', $(occasion).value];
 		memory.date 			= ['Date:', $(date).value];
-		memory.importance 	= ['Importance:', $(importance).value];
+		memory.importance 		= ['Importance:', $(importance).value];
 		memory.mood 			= ['Mood:', $(addHTML).value];
 		memory.including	 	= ['Shared With:', checkedValues];
 		memory.notes 			= ['Notes:', $(notes).value];

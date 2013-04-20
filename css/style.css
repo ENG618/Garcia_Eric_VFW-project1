@@ -50,8 +50,12 @@ p{
 
 input{
 	font-weight: bold;
-	font-size: 24px;
+	/*font-size: px;*/
 	/*background-color: #fff9f1;*/
+}
+
+button{
+	font-size: 24px;
 }
 
 footer{

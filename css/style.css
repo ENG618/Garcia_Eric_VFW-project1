@@ -48,10 +48,8 @@ p{
 }
 
 
-input{
+input.save{
 	font-weight: bold;
-	/*font-size: px;*/
-	/*background-color: #fff9f1;*/
 }
 
 button{

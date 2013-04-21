@@ -38,29 +38,33 @@ window.addEventListener('DOMContentLoaded', function(){
 	// Load Data Function
 	// Done
 	var loadData = function(){
-		toggleNav('on');
-		// Load from local storage
-		var makeDiv = document.createElement('div');
-		makeDiv.setAttribute(id, 'memories');
-		var makeList = document.createElement('ul');
-		makeDiv.appendChild(makeList);
-		document.body.appendChild(makeDiv);
-		$('memories').style.display = 'block';
-		for (var i=0; i<localStorage.length; i++){
-			var makeLi = document.createElement('li');
-			makeList.appendChild(makeLi);
-			var key = localStorage.key(i);
-			var value = localStorage.getItem(key);
-			// Convert sting from local storage to object
-			var obj = JSON.parse(value);
-			// Creating another list for each entry
-			var makeSubList = document.createElement('ul');
-			makeLi.appendChild(makeSubList);
-			for (var n in obj){
-				var makeSubLi = document.createElement('li');
-				makeSubList.appendChild(makeSubLi);
-				var optSubText = obj[n][0]+' '+obj[n][1];
-				makeSubLi.innerHTML = optSubText;
+		if(localStorage.length === 0){
+			alert('There are no memories to display')
+		}else{
+			toggleNav('on');
+			// Load from local storage
+			var makeDiv = document.createElement('div');
+			makeDiv.setAttribute(id, 'memories');
+			var makeList = document.createElement('ul');
+			makeDiv.appendChild(makeList);
+			document.body.appendChild(makeDiv);
+			$('memories').style.display = 'block';
+			for (var i=0; i<localStorage.length; i++){
+				var makeLi = document.createElement('li');
+				makeList.appendChild(makeLi);
+				var key = localStorage.key(i);
+				var value = localStorage.getItem(key);
+				// Convert sting from local storage to object
+				var obj = JSON.parse(value);
+				// Creating another list for each entry
+				var makeSubList = document.createElement('ul');
+				makeLi.appendChild(makeSubList);
+				for (var n in obj){
+					var makeSubLi = document.createElement('li');
+					makeSubList.appendChild(makeSubLi);
+					var optSubText = obj[n][0]+' '+obj[n][1];
+					makeSubLi.innerHTML = optSubText;
+				};
 			};
 		};
 	};
@@ -81,7 +85,14 @@ window.addEventListener('DOMContentLoaded', function(){
 	
 	// Clear Local Storage Function
 	var clearData = function(){
-		localStorage.clear;
+		if(localStorage.length === 0){
+			alert('There are no memories to clear');
+		}else{
+			localStorage.clear;
+			alert('All memories have been forgotten');
+			window.location.reload();
+			return false;
+		};
 	};
 
 	// Create mood field element and populate with options

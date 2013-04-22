@@ -7,6 +7,9 @@ window.addEventListener('DOMContentLoaded', function(){
 	//Variables
 	var eventMood = ['--Choose Mood--', 'Forgettable', 'Fun', 'Memorable', 'Sad'];
 	var	sharedWith;
+	var loadSavedData = $('loadSavedData');
+	var clearSavedData = $('clearSavedData');
+	var save = $('save');
 
 	// getElementById Function
 	// Done
@@ -16,7 +19,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	};
 
 	function toggleNav(x){
-		swithc(x){
+		switch(x){
 			case 'on':
 				$('form').style.display = 'none';
 				$('clearSavedData').style.display = 'inline';
@@ -39,7 +42,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	// Done
 	var loadData = function(){
 		if(localStorage.length === 0){
-			alert('There are no memories to display')
+			alert('There are no memories to display');
 		}else{
 			toggleNav('on');
 			// Load from local storage
@@ -80,7 +83,7 @@ window.addEventListener('DOMContentLoaded', function(){
 			};
 		};
 		// Not sure if this is correct?!?!
-		return checkedValues
+		return checkedValues;
 	};
 	
 	// Clear Local Storage Function
@@ -130,9 +133,6 @@ window.addEventListener('DOMContentLoaded', function(){
 	};
 
 	// Display/Clear data & Submit links
-	var loadSavedData = $('loadSavedData');
-	var clearSavedData = $('clearSavedData');
-	var save = $('save');
 	loadSavedData.addEventListener('click', loadData);
 	clearSavedData.addEventListener('click', clearData);
 	save.addEventListener('click', saveForm);

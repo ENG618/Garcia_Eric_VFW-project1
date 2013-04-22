@@ -20,6 +20,10 @@ h1{
 	/*border: 1px solid #fff9f1;*/
 }
 
+nav{
+	margin-left: 24px;
+}
+
 body{
 	/*border: 1px solid #fff9f1;*/
 	background-color: #fff9f1;

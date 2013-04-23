@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', function(){
 			toggleNav('on');
 			// Load from local storage
 			var makeDiv = document.createElement('div');
-			makeDiv.setAttribute(id, 'memories');
+			makeDiv.setAttribute('id', 'memories');
 			var makeList = document.createElement('ul');
 			makeDiv.appendChild(makeList);
 			document.body.appendChild(makeDiv);
@@ -91,7 +91,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		if(localStorage.length === 0){
 			alert('There are no memories to clear');
 		}else{
-			localStorage.clear;
+			localStorage.clear();
 			alert('All memories have been forgotten');
 			window.location.reload();
 			return false;
@@ -104,7 +104,7 @@ window.addEventListener('DOMContentLoaded', function(){
 			moodLi = $('addHTML'),
 			makeMood = document.createElement('select');
 			// Need to correct this element
-			makeMood.setAttribute('id', 'test');
+			makeMood.setAttribute('id', 'mood');
 		for (var i=0; i<eventMood.length; i++){
 			var makeOption = document.createElement('option');
 			var optText = eventMood[i];
@@ -118,15 +118,14 @@ window.addEventListener('DOMContentLoaded', function(){
 
 	// Save Data Functions (Store memory button)
 	var saveForm = function(){
-		getCheckedValues();
 		var id 					= Math.floor(Math.random()*12345678);
 		var memory 				= {};
-		memory.occasion 		= ['Occasion:', $(occasion).value];
-		memory.date 			= ['Date:', $(date).value];
-		memory.importance 		= ['Importance:', $(importance).value];
-		memory.mood 			= ['Mood:', $(addHTML).value];
-		memory.including	 	= ['Shared With:', checkedValues];
-		memory.notes 			= ['Notes:', $(notes).value];
+		memory.occasion 		= ['Occasion:', $('occasion').value];
+		memory.date 			= ['Date:', $('date').value];
+		memory.importance 		= ['Importance:', $('importance').value];
+		memory.mood 			= ['Mood:', $('mood').value];
+		memory.including	 	= ['Shared With:', getCheckedValues()];
+		memory.notes 			= ['Notes:', $('notes').value];
 		// Save data to local Storage
 		localStorage.setItem(id, JSON.stringify(memory));
 		alert('Your memory is safe!!');

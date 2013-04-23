@@ -98,6 +98,21 @@ window.addEventListener('DOMContentLoaded', function(){
 		};
 	};
 
+	// Save Data Functions (Store memory button)
+	var saveForm = function(){
+		var id 					= Math.floor(Math.random()*12345678);
+		var memory 				= {};
+		memory.occasion 		= ['Occasion:', $('occasion').value];
+		memory.date 			= ['Date:', $('date').value];
+		memory.importance 		= ['Importance:', $('importance').value];
+		memory.mood 			= ['Mood:', $('mood').value];
+		memory.including	 	= ['Shared With:', getCheckedValues()];
+		memory.notes 			= ['Notes:', $('notes').value];
+		// Save data to local Storage
+		localStorage.setItem(id, JSON.stringify(memory));
+		alert('Your memory is safe!!');
+	};
+
 	// Create mood field element and populate with options
 	function creatMoodField(){
 		var formTag = document.getElementsByTagName('form'),
@@ -115,28 +130,11 @@ window.addEventListener('DOMContentLoaded', function(){
 		moodLi.appendChild(makeMood);
 	};
 
-
-	// Save Data Functions (Store memory button)
-	var saveForm = function(){
-		var id 					= Math.floor(Math.random()*12345678);
-		var memory 				= {};
-		memory.occasion 		= ['Occasion:', $('occasion').value];
-		memory.date 			= ['Date:', $('date').value];
-		memory.importance 		= ['Importance:', $('importance').value];
-		memory.mood 			= ['Mood:', $('mood').value];
-		memory.including	 	= ['Shared With:', getCheckedValues()];
-		memory.notes 			= ['Notes:', $('notes').value];
-		// Save data to local Storage
-		localStorage.setItem(id, JSON.stringify(memory));
-		alert('Your memory is safe!!');
-	};
-
 	// Display/Clear data & Submit links
 	loadSavedData.addEventListener('click', loadData);
 	clearSavedData.addEventListener('click', clearData);
 	save.addEventListener('click', saveForm);
 
-
-
 	creatMoodField();
 });
+

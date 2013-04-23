@@ -6,37 +6,44 @@ Project2 add style
 
 html{
 	font-family: helvetica, times, arial;
-	font-size: 32px;
+	font-size: 10px;
 	background-color: #8c7f56;
 }
 
 h1{
-	/*width: 250px;*/
+	width: 180px;
 	text-align: center;
 	color: #D8F5BD;
 	margin: 5px;
-	margin-top: 24px;
 	padding: 5px;
-	/*border: 1px solid #fff9f1;*/
+	border: 1px solid black;
 }
 
 nav{
-	margin-left: 24px;
+	width: 191px;
+	font-size: 12px;
+	margin: 5px;
+	padding: 2px;
+	/*text-align: center;*/
+	border: 1px solid black;
+	display: block;
 }
 
 body{
-	/*border: 1px solid #fff9f1;*/
-	background-color: #fff9f1;
-	padding: 50px;
-	margin: 50px;
+	width: 200px;
+	border: 1px dashed #fff9f1;
+	/*background-color: #fff9f1;*/
+	padding: 5px;
+	margin: 5px;
 }
 
 legend{
 	font-weight: bold;
+	font-size: 12px;
 }
 
 form{
-	margin: 10px;
+	/*margin: 5px;*/
 	padding: 5px;
 }
 
@@ -45,22 +52,35 @@ ul{
 }
 
 p{
-	/*font-size: 14px;*/
-	line-height: 1.4em;
-	margin: 25px;
-	padding: 25px;
+	width: 180px;
+	line-height: 1em;
+	margin: 5px;
+	padding: 5px;
 }
 
 
-input.save{
+/*input.save{
 	font-weight: bold;
 }
-
+*/
 button{
-	font-size: 24px;
+	font-size: 10px;
 }
 
-footer{
+/*footer{
 	font-size: 12px;
 	margin-top: 50px;
+}
+*/
+
+h1.mainPage{
+	width: 125px;
+}
+
+body.mainPage{
+	width: 125px;
+}
+
+p.mainPage{
+	width: 125px;
 }

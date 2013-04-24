@@ -54,12 +54,13 @@ window.addEventListener('DOMContentLoaded', function(){
 			$('memories').style.display = 'block';
 			for (var i=0; i<localStorage.length; i++){
 				var makeLi = document.createElement('li');
+				var linksLi = document.createElement('li');
 				makeList.appendChild(makeLi);
 				var key = localStorage.key(i);
 				var value = localStorage.getItem(key);
 				// Convert sting from local storage to object
 				var obj = JSON.parse(value);
-				// Creating another list for each entry
+				// Creating another list for each memory
 				var makeSubList = document.createElement('ul');
 				makeLi.appendChild(makeSubList);
 				for (var n in obj){
@@ -67,9 +68,36 @@ window.addEventListener('DOMContentLoaded', function(){
 					makeSubList.appendChild(makeSubLi);
 					var optSubText = obj[n][0]+' '+obj[n][1];
 					makeSubLi.innerHTML = optSubText;
+					makeSubList.appendChild(linksLi);
 				};
+				makeItemLinks(localStorage.key(i), linksLi);  
 			};
 		};
+	};
+
+	// Function creates links to edit or delete items from local storage
+	var makeItemLinks = function(key, linksLi){
+		// Edit Link
+		var editLink = document.createElement('a');
+		editLink.href = '#';
+		editLink.key = key;
+		var editText = 'Edit Memory';
+		// editLink.addEventListener(click, editItem);
+		editLink.innerHTML = editText;
+		linksLi.appendChild(editLink);
+
+		// All line break
+		var breakTag = document.createElement('br');
+		linksLi.appendChild(breakTag);
+
+		// Delete link
+		var deleteLink = document.createElement('a');
+		deleteLink.href = '#';
+		deleteLink.key = key;
+		var deleteText = 'Erase Memory';
+		// deleteLink.addEventListener(click, deleteItem);
+		deleteLink.innerHTML = deleteText;
+		linksLi.appendChild(deleteLink);
 	};
 
 	//Check-box array

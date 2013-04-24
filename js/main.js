@@ -191,17 +191,19 @@ window.addEventListener('DOMContentLoaded', function(){
 		editSave.key = this.key;
 	};
 
+	// Delete individual memory
 	function deleteMem(){
 		var ask = confirm('Are you sure you want to forget this memory?')
 		if(ask){
 			localStorage.removeItem(this.key);
 			alert('Memory has been forgotten');
-			window.location.reload
+			window.location.reload();
 		}else{
 			alert('Your memory is intact!!');
 		};
 	};
 
+	// Validate form fields function
 	function validate(e){
 		// Define elements that need to be validated
 		var getOccasion 	= $('occasion'),

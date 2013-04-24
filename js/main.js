@@ -170,8 +170,8 @@ window.addEventListener('DOMContentLoaded', function(){
 		$('mood').value = memory.mood[1];
 		var checkboxes = $('form').sharedWith;
 		for(var i=0; i<checkboxes.length; i++){
-			if (checkboxes[i] == 'checked'){
-				$('form').sharedWith.setAttribute(checked, checked);
+			if (checkboxes[i].checked){
+				checkboxes[i].setAttribute('checked', 'checked');
 			};
 		};
 		$('notes').value = memory.notes[1];

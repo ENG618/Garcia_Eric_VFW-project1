@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	};
 
 	//Check-box array
-	var getCheckedValues = function(){
+	function getCheckedValues(){
 		var checkboxes = $('form').sharedWith,
 			checkedValues = [];
 		for (i=0; i<checkboxes.length; i++){
@@ -68,7 +68,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	};
 
 	// Save Data Functions (Store memory button)
-	var saveForm = function(key){
+	function saveForm(key){
 		if(!key){
 			var id 					= Math.floor(Math.random()*12345678);
 		}else{
@@ -87,7 +87,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	};
 
 	// Load Data Function
-	var loadData = function(){
+	function loadData(){
 		if(localStorage.length === 0){
 			alert('There are no memories to display');
 		}else{
@@ -123,7 +123,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	};
 
 	// Clear Local Storage Function
-	var clearData = function(){
+	function clearData(){
 		if(localStorage.length === 0){
 			alert('There are no memories to clear');
 		}else{
@@ -135,7 +135,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	};
 
 	// Function creates links to edit or delete items from local storage
-	var makeItemLinks = function(key, linksLi){
+	function makeItemLinks(key, linksLi){
 		// Edit individual memory link
 		var editMemLink = document.createElement('a');
 		editMemLink.href = '#';
@@ -160,7 +160,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	};
 
 	// Edit individual memory in local storage
-	var editMem = function(){
+	function editMem(){
 		var value = localStorage.getItem(this.key);
 		var memory = JSON.parse(value);
 
@@ -180,19 +180,18 @@ window.addEventListener('DOMContentLoaded', function(){
 		};
 		$('notes').value = memory.notes[1];
 
-	// Remove save event listener
-	save.removeEventListener('click', saveForm);
+		// Remove save event listener
+		save.removeEventListener('click', saveForm);
 
-	// Change save button to edit button
-	save.value = 'Edit Memory'; 
-	var editSave = save;
-	// Save key value of memory selected to edit so it can be overwrote by the new info.
-	editSave.addEventListener('click', validate);
-	editSave.key = this.key;
-
+		// Change save button to edit button
+		save.value = 'Edit Memory'; 
+		var editSave = save;
+		// Save key value of memory selected to edit so it can be overwrote by the new info.
+		editSave.addEventListener('click', validate);
+		editSave.key = this.key;
 	};
 
-	var validate = function(e){
+	function validate(e){
 		// Define elements that need to be validated
 		var getOccasion 	= $('occasion'),
 			getDate 		= $('date'),
@@ -211,19 +210,19 @@ window.addEventListener('DOMContentLoaded', function(){
 			getOccasion.style.border = '1px solid red';
 			errorMsgAry.push(ocationError);
 		};
-/*		// Date validation
-		if(){
+		// // Date validation
+		// if(){
 
-		};
-		// Importance validation
-		if(){
+		// };
+		// // Importance validation
+		// if(){
 
-		};
-		// Mood validation
-		if(){ 
+		// };
+		// // Mood validation
+		// if(){ 
 
-		};
-*/		// If there are error messages display on screen
+		// };
+		// // If there are error messages display on screen
 		if(errorMsgAry >= 1){
 			for (var i=0; i<errorMsgAry.length; i++){
 				var txt = document.createElement(li);

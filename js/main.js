@@ -12,10 +12,39 @@ window.addEventListener('DOMContentLoaded', function(){
 	var save = $('save');
 
 	// getElementById Function
-	// Done
 	function $(x){
 		var elementRequested = document.getElementById(x);
 		return elementRequested;
+	};
+
+	// Create mood field element and populate with options
+	function creatMoodField(){
+		var formTag = document.getElementsByTagName('form'),
+			moodLi = $('addHTML'),
+			makeMood = document.createElement('select');
+			// Need to correct this element
+			makeMood.setAttribute('id', 'mood');
+		for (var i=0; i<eventMood.length; i++){
+			var makeOption = document.createElement('option');
+			var optText = eventMood[i];
+			makeOption.setAttribute('value', optText);
+			makeOption.innerHTML = optText;
+			makeMood.appendChild(makeOption);
+		};
+		moodLi.appendChild(makeMood);
+	};
+
+	//Check-box array
+	var getCheckedValues = function(){
+		var checkboxes = $('form').sharedWith,
+			checkedValues = [];
+		for (i=0; i<checkboxes.length; i++){
+			if(checkboxes[i].checked ){
+				checkedValues.push(checkboxes[i].value);
+			};
+		};
+		// Not sure if this is correct?!?!
+		return checkedValues;
 	};
 
 	function toggleNav(x){
@@ -38,8 +67,22 @@ window.addEventListener('DOMContentLoaded', function(){
 		};
 	};
 
+	// Save Data Functions (Store memory button)
+	var saveForm = function(){
+		var id 					= Math.floor(Math.random()*12345678);
+		var memory 				= {};
+		memory.occasion 		= ['Occasion:', $('occasion').value];
+		memory.date 			= ['Date:', $('date').value];
+		memory.importance 		= ['Importance:', $('importance').value];
+		memory.mood 			= ['Mood:', $('mood').value];
+		memory.including	 	= ['Shared With:', getCheckedValues()];
+		memory.notes 			= ['Notes:', $('notes').value];
+		// Save data to local Storage
+		localStorage.setItem(id, JSON.stringify(memory));
+		alert('Your memory is safe!!');
+	};
+
 	// Load Data Function
-	// Done
 	var loadData = function(){
 		if(localStorage.length === 0){
 			alert('There are no memories to display');
@@ -75,6 +118,18 @@ window.addEventListener('DOMContentLoaded', function(){
 		};
 	};
 
+	// Clear Local Storage Function
+	var clearData = function(){
+		if(localStorage.length === 0){
+			alert('There are no memories to clear');
+		}else{
+			localStorage.clear();
+			alert('All memories have been forgotten');
+			window.location.reload();
+			return false;
+		};
+	};
+
 	// Function creates links to edit or delete items from local storage
 	var makeItemLinks = function(key, linksLi){
 		// Edit Link
@@ -82,7 +137,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		editLink.href = '#';
 		editLink.key = key;
 		var editText = 'Edit Memory';
-		// editLink.addEventListener(click, editItem);
+		editLink.addEventListener('click', editItem);
 		editLink.innerHTML = editText;
 		linksLi.appendChild(editLink);
 
@@ -100,63 +155,28 @@ window.addEventListener('DOMContentLoaded', function(){
 		linksLi.appendChild(deleteLink);
 	};
 
-	//Check-box array
-	// Done?
-	var getCheckedValues = function(){
-		var checkboxes = $('form').sharedWith,
-			checkedValues = [];
-		for (i=0; i<checkboxes.length; i++){
-			if(checkboxes[i].checked ){
-				checkedValues.push(checkboxes[i].value);
+	// Edit individual memory in local storage
+	var editItem = function(){
+		var value = localStorage.getItem(this.key);
+		var memory = JSON.parse(value);
+
+		// Show the form
+		toggleNav('off');
+
+		// Populate form fields
+		$('occasion').value = memory.occasion[1];
+		$('date').value = memory.date[1];
+		$('importance').value = memory.importance[1];
+		$('mood').value = memory.mood[1];
+		var checkboxes = $('form').sharedWith;
+		for(var i=0; i<checkboxes.length; i++){
+			if (checkboxes[i] == 'checked'){
+				$('form').sharedWith.setAttribute(checked, checked);
 			};
 		};
-		// Not sure if this is correct?!?!
-		return checkedValues;
+		$('notes').value = memory.notes[1];
 	};
 	
-	// Clear Local Storage Function
-	var clearData = function(){
-		if(localStorage.length === 0){
-			alert('There are no memories to clear');
-		}else{
-			localStorage.clear();
-			alert('All memories have been forgotten');
-			window.location.reload();
-			return false;
-		};
-	};
-
-	// Save Data Functions (Store memory button)
-	var saveForm = function(){
-		var id 					= Math.floor(Math.random()*12345678);
-		var memory 				= {};
-		memory.occasion 		= ['Occasion:', $('occasion').value];
-		memory.date 			= ['Date:', $('date').value];
-		memory.importance 		= ['Importance:', $('importance').value];
-		memory.mood 			= ['Mood:', $('mood').value];
-		memory.including	 	= ['Shared With:', getCheckedValues()];
-		memory.notes 			= ['Notes:', $('notes').value];
-		// Save data to local Storage
-		localStorage.setItem(id, JSON.stringify(memory));
-		alert('Your memory is safe!!');
-	};
-
-	// Create mood field element and populate with options
-	function creatMoodField(){
-		var formTag = document.getElementsByTagName('form'),
-			moodLi = $('addHTML'),
-			makeMood = document.createElement('select');
-			// Need to correct this element
-			makeMood.setAttribute('id', 'mood');
-		for (var i=0; i<eventMood.length; i++){
-			var makeOption = document.createElement('option');
-			var optText = eventMood[i];
-			makeOption.setAttribute('value', optText);
-			makeOption.innerHTML = optText;
-			makeMood.appendChild(makeOption);
-		};
-		moodLi.appendChild(makeMood);
-	};
 
 	// Display/Clear data & Submit links
 	loadSavedData.addEventListener('click', loadData);

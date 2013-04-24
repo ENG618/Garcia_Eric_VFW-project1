@@ -153,8 +153,8 @@ window.addEventListener('DOMContentLoaded', function(){
 		var deleteMemLink = document.createElement('a');
 		deleteMemLink.href = '#';
 		deleteMemLink.key = key;
-		var deleteText = 'Erase Memory';
-		// deleteMemLink.addEventListener(click, deleteItem);
+		var deleteText = 'Erase From Memory';
+		deleteMemLink.addEventListener('click', deleteMem);
 		deleteMemLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteMemLink);
 	};
@@ -189,6 +189,17 @@ window.addEventListener('DOMContentLoaded', function(){
 		// Save key value of memory selected to edit so it can be overwrote by the new info.
 		editSave.addEventListener('click', validate);
 		editSave.key = this.key;
+	};
+
+	function deleteMem(){
+		var ask = confirm('Are you sure you want to forget this memory?')
+		if(ask){
+			localStorage.removeItem(this.key);
+			alert('Memory has been forgotten');
+			window.location.reload
+		}else{
+			alert('Your memory is intact!!');
+		};
 	};
 
 	function validate(e){

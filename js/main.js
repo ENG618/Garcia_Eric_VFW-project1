@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', function(){
 				$('form').style.display = 'none';
 				$('clearSavedData').style.display = 'inline';
 				$('loadSavedData').style.display = 'none';
-				$('addNewMemory').style.displa = 'inline';
+				$('addNewMemory').style.display = 'block';
 				break;
 			case 'off':
 				$('form').style.display = 'block';
@@ -127,10 +127,15 @@ window.addEventListener('DOMContentLoaded', function(){
 		if(localStorage.length === 0){
 			alert('There are no memories to clear');
 		}else{
+			var ask = confirm('This will cause you to forget all memories...Are you sure you want to do this?');
+			if(ask){
 			localStorage.clear();
 			alert('All memories have been forgotten');
 			window.location.reload();
 			return false;
+			}else{
+				alert('All your memories are still safe!!');
+			}
 		};
 	};
 
@@ -213,7 +218,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 		// Reset error message
 		errorMsg.innerHTML = '';
-		getOccasion.style.border = '1px solid red';
+		getOccasion.style.border = '1px solid black';
 
 		// Error messages
 		var errorMsgAry = [];

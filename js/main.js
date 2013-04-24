@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	var loadSavedData = $('loadSavedData');
 	var clearSavedData = $('clearSavedData');
 	var save = $('save');
+	var errorMsg = $('errors');
 
 	// getElementById Function
 	function $(x){
@@ -43,7 +44,6 @@ window.addEventListener('DOMContentLoaded', function(){
 				checkedValues.push(checkboxes[i].value);
 			};
 		};
-		// Not sure if this is correct?!?!
 		return checkedValues;
 	};
 
@@ -68,8 +68,12 @@ window.addEventListener('DOMContentLoaded', function(){
 	};
 
 	// Save Data Functions (Store memory button)
-	var saveForm = function(){
-		var id 					= Math.floor(Math.random()*12345678);
+	var saveForm = function(key){
+		if(!key){
+			var id 					= Math.floor(Math.random()*12345678);
+		}else{
+			id = key
+		};
 		var memory 				= {};
 		memory.occasion 		= ['Occasion:', $('occasion').value];
 		memory.date 			= ['Date:', $('date').value];
@@ -132,31 +136,31 @@ window.addEventListener('DOMContentLoaded', function(){
 
 	// Function creates links to edit or delete items from local storage
 	var makeItemLinks = function(key, linksLi){
-		// Edit Link
-		var editLink = document.createElement('a');
-		editLink.href = '#';
-		editLink.key = key;
-		var editText = 'Edit Memory';
-		editLink.addEventListener('click', editItem);
-		editLink.innerHTML = editText;
-		linksLi.appendChild(editLink);
+		// Edit individual memory link
+		var editMemLink = document.createElement('a');
+		editMemLink.href = '#';
+		editMemLink.key = key;
+		var editMemText = 'Edit Memory';
+		editMemLink.addEventListener('click', editMem);
+		editMemLink.innerHTML = editMemText;
+		linksLi.appendChild(editMemLink);
 
-		// All line break
+		// Add line break
 		var breakTag = document.createElement('br');
 		linksLi.appendChild(breakTag);
 
-		// Delete link
-		var deleteLink = document.createElement('a');
-		deleteLink.href = '#';
-		deleteLink.key = key;
+		// Delete individual memory link
+		var deleteMemLink = document.createElement('a');
+		deleteMemLink.href = '#';
+		deleteMemLink.key = key;
 		var deleteText = 'Erase Memory';
-		// deleteLink.addEventListener(click, deleteItem);
-		deleteLink.innerHTML = deleteText;
-		linksLi.appendChild(deleteLink);
+		// deleteMemLink.addEventListener(click, deleteItem);
+		deleteMemLink.innerHTML = deleteText;
+		linksLi.appendChild(deleteMemLink);
 	};
 
 	// Edit individual memory in local storage
-	var editItem = function(){
+	var editMem = function(){
 		var value = localStorage.getItem(this.key);
 		var memory = JSON.parse(value);
 
@@ -175,13 +179,72 @@ window.addEventListener('DOMContentLoaded', function(){
 			};
 		};
 		$('notes').value = memory.notes[1];
+
+	// Remove save event listener
+	save.removeEventListener('click', saveForm);
+
+	// Change save button to edit button
+	save.value = 'Edit Memory'; 
+	var editSave = save;
+	// Save key value of memory selected to edit so it can be overwrote by the new info.
+	editSave.addEventListener('click', validate);
+	editSave.key = this.key;
+
 	};
+
+	var validate = function(e){
+		// Define elements that need to be validated
+		var getOccasion 	= $('occasion'),
+			getDate 		= $('date'),
+			getImportance 	= $('importance'),
+			getMood 		= $('mood');
+
+		// Reset error message
+		errorMsg.innerHTML = '';
+		getOccasion.style.border = '1px solid red';
+
+		// Error messages
+		var errorMsgAry = [];
+		// Occasion validation
+		if(getOccasion.value == ''){
+			var ocationError = 'Whats a memory with out an Occasion?';
+			getOccasion.style.border = '1px solid red';
+			errorMsgAry.push(ocationError);
+		};
+/*		// Date validation
+		if(){
+
+		};
+		// Importance validation
+		if(){
+
+		};
+		// Mood validation
+		if(){ 
+
+		};
+*/		// If there are error messages display on screen
+		if(errorMsgAry >= 1){
+			for (var i=0; i<errorMsgAry.length; i++){
+				var txt = document.createElement(li);
+				txt.innerHTML = errorMsgAry[i];
+				errorMsg.appendChild(txt);
+			};
+			e.preventDefault();
+			return false;
+		}else{
+			// If no errors save memory
+			// Send key value with function call. Passed through editSave event listener as a property
+			saveForm(this.key);
+		};
+	};
+
 	
 
 	// Display/Clear data & Submit links
 	loadSavedData.addEventListener('click', loadData);
 	clearSavedData.addEventListener('click', clearData);
-	save.addEventListener('click', saveForm);
+	save.addEventListener('click', validate);
 
 	creatMoodField();
 });

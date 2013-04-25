@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		moodLi.appendChild(makeMood);
 	};
 
-	//Check-box array
+	//Get checked values
 	function getCheckedValues(){
 		var checkboxes = $('form').sharedWith,
 			checkedValues = [];
@@ -179,29 +179,21 @@ window.addEventListener('DOMContentLoaded', function(){
 		$('importance').value = memory.importance[1];
 		$('mood').value = memory.mood[1];
 		var checkboxes = $('form').sharedWith;
-		for(var x=0, y=memory.including[1] ; x<y.length; x++){
-			for(var i=0; i<checkboxes.length; i++){
-				if(y[x].value === checkboxes[i].value){
-					checkboxes[i].setAttribute('checked', 'checked');
+		var y = memory.including[1];
+		for(var x=0; x<y.length; x++){
+			console.log(y[x]);
+			console.log(x);
+			if(y.length >= 1){
+				for(var i=0; i<checkboxes.length; i++){
+					if(checkboxes[i].value === y[x]){
+						checkboxes[i].setAttribute('checked', 'checked');
+						console.log(checkboxes[i]);
+						console.log('Test');
+					};
 				};
 			};
 		};
 
-
-
-
-
-
-/*		for(var i=0; i<checkboxes.length; i++){
-			if(){
-
-			};	
-				if(checkboxes[i].checked){
-					checkboxes[i].setAttribute('checked', 'checked');
-				};
-		};
-		$('notes').value = memory.notes[1];
-*/
 		// Remove save event listener
 		save.removeEventListener('click', saveForm);
 

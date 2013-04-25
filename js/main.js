@@ -84,6 +84,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		// Save data to local Storage
 		localStorage.setItem(id, JSON.stringify(memory));
 		alert('Your memory is safe!!');
+		window.location.reload();
 	};
 
 	// Load Data Function
@@ -178,13 +179,29 @@ window.addEventListener('DOMContentLoaded', function(){
 		$('importance').value = memory.importance[1];
 		$('mood').value = memory.mood[1];
 		var checkboxes = $('form').sharedWith;
-		for(var i=0; i<checkboxes.length; i++){
-			if (checkboxes[i].checked){
-				checkboxes[i].setAttribute('checked', 'checked');
+		for(var x=0, y=memory.including[1] ; x<y.length; x++){
+			for(var i=0; i<checkboxes.length; i++){
+				if(y[x].value === checkboxes[i].value){
+					checkboxes[i].setAttribute('checked', 'checked');
+				};
 			};
 		};
-		$('notes').value = memory.notes[1];
 
+
+
+
+
+
+/*		for(var i=0; i<checkboxes.length; i++){
+			if(){
+
+			};	
+				if(checkboxes[i].checked){
+					checkboxes[i].setAttribute('checked', 'checked');
+				};
+		};
+		$('notes').value = memory.notes[1];
+*/
 		// Remove save event listener
 		save.removeEventListener('click', saveForm);
 
@@ -255,8 +272,6 @@ window.addEventListener('DOMContentLoaded', function(){
 			saveForm(this.key);
 		};
 	};
-
-	
 
 	// Display/Clear data & Submit links
 	loadSavedData.addEventListener('click', loadData);

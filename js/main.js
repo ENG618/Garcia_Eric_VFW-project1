@@ -181,14 +181,11 @@ window.addEventListener('DOMContentLoaded', function(){
 		var checkboxes = $('form').sharedWith;
 		var y = memory.including[1];
 		for(var x=0; x<y.length; x++){
-			console.log(y[x]);
-			console.log(x);
 			if(y.length >= 1){
 				for(var i=0; i<checkboxes.length; i++){
 					if(checkboxes[i].value === y[x]){
 						checkboxes[i].setAttribute('checked', 'checked');
 						console.log(checkboxes[i]);
-						console.log('Test');
 					};
 				};
 			};

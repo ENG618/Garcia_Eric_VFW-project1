@@ -84,7 +84,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		// Save data to local Storage
 		localStorage.setItem(id, JSON.stringify(memory));
 		alert('Your memory is safe!!');
-		// window.location.reload();
+		window.location.reload();
 	};
 
 	// Load Data Function
@@ -185,7 +185,6 @@ window.addEventListener('DOMContentLoaded', function(){
 				for(var i=0; i<checkboxes.length; i++){
 					if(checkboxes[i].value === y[x]){
 						checkboxes[i].setAttribute('checked', 'checked');
-						console.log(checkboxes[i]);
 					};
 				};
 			};
@@ -223,8 +222,8 @@ window.addEventListener('DOMContentLoaded', function(){
 
 		// Reset error message
 		errorMsg.innerHTML = '';
-		getOccasion.style.border = '1px solid black';
-		getMood.style.border = '1px solid black';
+		getOccasion.style.border = 'none';
+		getMood.style.border = 'none';
 
 		// Error messages array
 		var errorMsgAry = [];
@@ -247,7 +246,7 @@ window.addEventListener('DOMContentLoaded', function(){
 			getMood.style.border = '1px solid red';
 			errorMsgAry.push(moodError);
 		};
-		
+
 		// If there are error messages display on screen
 		if(errorMsgAry.length >= 1){
 			for (var i=0; i<errorMsgAry.length; i++){

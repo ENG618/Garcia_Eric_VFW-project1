@@ -84,3 +84,8 @@ body.mainPage{
 p.mainPage{
 	width: 125px;
 }
+
+#errors{
+	color: red;
+	font-weight: bold;
+}

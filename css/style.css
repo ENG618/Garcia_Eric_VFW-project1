@@ -8,31 +8,28 @@ html{
 	font-family: helvetica, times, arial;
 	font-size: 10px;
 	background-color: #8c7f56;
+	width: 150px;
 }
 
 h1{
-	width: 180px;
+	width: 220px;
 	text-align: center;
-	color: #D8F5BD;
+	color: #CCAB72;
 	margin: 5px;
 	padding: 5px;
-	border: 1px solid black;
 }
 
 nav{
-	width: 191px;
+	width: 236px;
 	font-size: 12px;
 	margin: 5px;
 	padding: 2px;
-	/*text-align: center;*/
-	border: 1px solid black;
 	display: block;
 }
 
 body{
-	width: 200px;
-	border: 1px dashed #fff9f1;
-	/*background-color: #fff9f1;*/
+	width: 250px;
+	background-color: #fff9f1;
 	padding: 5px;
 	margin: 5px;
 }
@@ -43,8 +40,8 @@ legend{
 }
 
 form{
-	/*margin: 5px;*/
-	padding: 5px;
+	margin: 2px;
+	padding: 2px;
 }
 
 ul{
@@ -52,38 +49,29 @@ ul{
 }
 
 p{
-	width: 180px;
-	line-height: 1em;
+/*	width: 180px;
+*/	line-height: 1em;
 	margin: 5px;
 	padding: 5px;
 }
 
 
-/*input.save{
-	font-weight: bold;
-}
-*/
+input.save{
+/*	font-weight: bold;
+*/}
+
 button{
 	font-size: 10px;
 }
 
-/*footer{
-	font-size: 12px;
-	margin-top: 50px;
-}
-*/
-
-h1.mainPage{
-	width: 125px;
-}
-
-body.mainPage{
-	width: 125px;
+footer{
+	font-size: 8px;
+	margin-top: 20px;
 }
 
 p.mainPage{
-	width: 125px;
-}
+/*	width: 125px;
+*/}
 
 #errors{
 	color: red;

@@ -70,9 +70,9 @@ window.addEventListener('DOMContentLoaded', function(){
 	// Save Data Functions (Store memory button)
 	function saveForm(key){
 		if(!key){
-			var id 					= Math.floor(Math.random()*12345678);
+			var id 	= Math.floor(Math.random()*12345678);
 		}else{
-			id = key
+			id = key;
 		};
 		var memory 				= {};
 		memory.occasion 		= ['Occasion:', $('occasion').value];
@@ -84,7 +84,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		// Save data to local Storage
 		localStorage.setItem(id, JSON.stringify(memory));
 		alert('Your memory is safe!!');
-		window.location.reload();
+		// window.location.reload();
 	};
 
 	// Load Data Function
@@ -204,7 +204,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 	// Delete individual memory
 	function deleteMem(){
-		var ask = confirm('Are you sure you want to forget this memory?')
+		var ask = confirm('Are you sure you want to forget this memory?');
 		if(ask){
 			localStorage.removeItem(this.key);
 			alert('Memory has been forgotten');
@@ -217,39 +217,41 @@ window.addEventListener('DOMContentLoaded', function(){
 	// Validate form fields function
 	function validate(e){
 		// Define elements that need to be validated
-		var getOccasion 	= $('occasion'),
-			getDate 		= $('date'),
-			getImportance 	= $('importance'),
-			getMood 		= $('mood');
+		var getOccasion = $('occasion'),
+			getDate 	= $('date'),
+			getMood 	= $('mood');
 
 		// Reset error message
 		errorMsg.innerHTML = '';
 		getOccasion.style.border = '1px solid black';
+		getMood.style.border = '1px solid black';
 
-		// Error messages
+		// Error messages array
 		var errorMsgAry = [];
+
 		// Occasion validation
-		if(getOccasion.value == ''){
+		if(getOccasion.value === ''){
 			var ocationError = 'Whats a memory with out an Occasion?';
 			getOccasion.style.border = '1px solid red';
 			errorMsgAry.push(ocationError);
 		};
+
 		// // Date validation
 		// if(){
 
 		// };
-		// // Importance validation
-		// if(){
 
-		// };
-		// // Mood validation
-		// if(){ 
-
-		// };
-		// // If there are error messages display on screen
-		if(errorMsgAry >= 1){
+		// Mood validation
+		if(getMood.value === '--Choose Mood--' ){ 
+			var moodError = 'Setting the mood makes memory better!!';
+			getMood.style.border = '1px solid red';
+			errorMsgAry.push(moodError);
+		};
+		
+		// If there are error messages display on screen
+		if(errorMsgAry.length >= 1){
 			for (var i=0; i<errorMsgAry.length; i++){
-				var txt = document.createElement(li);
+				var txt = document.createElement('li');
 				txt.innerHTML = errorMsgAry[i];
 				errorMsg.appendChild(txt);
 			};

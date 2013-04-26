@@ -29,13 +29,13 @@
 		<form action='#' method='post' id='form'>
 				<legend>Important Memory</legend>
 			<ul>
+				<ul id='errors'></ul>
+				<ul>
 				<li><label for='c'>Occasion</label><br /><input type='text' id='occasion' /></li>
 				<li><label for='date'>Date</label><br /><input type='date' id='date' /></li>
 				<li><label for='importance'>Importance</label><br /><input type='range'id='importance' /></li>
 				<li id='addHTML'><label for='mood'>Mood of even</label><br /></li>
 				<li>Memory shared with?
-					<ul id='errors'></ul>
-					<ul>
 						<li><input type='checkbox' checked value='Family' id='family' name='sharedWith' />
 							<label for='family'>Family</label></li>
 						<li><input type='checkbox' value='Significant other' id='significantOther' name='sharedWith' />

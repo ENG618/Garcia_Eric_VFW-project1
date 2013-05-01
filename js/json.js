@@ -2,38 +2,38 @@
 //VFW 1304
 //Project 4
 
-var = json={
+var json = {
 	'memory1': {
 		'occasion': ['Occasion', 'Wedding'],
-		'date': ['Date', ],
-		'importance': [],
-		'moodError': [],
-		'including': [],
-		'notes': []
+		'date': ['Date', '2010-08-21'],
+		'importance': ['Importance', '100'],
+		'mood': ['Mood', 'Memorable'],
+		'including': ['Shared With', ['Family', 'Significant other', 'Friends']],
+		'notes': ['Notes', 'What an amazing event']
 	},
 	'memory2': {
-		'occasion': ['Occasion', ''],
-		'date': [],
-		'importance': [],
-		'moodError': [],
-		'including': [],
-		'notes': []
+		'occasion': ['Occasion', 'Noah was born'],
+		'date': ['Date', '2011-12-20'],
+		'importance': ['Importance', '100'],
+		'mood': ['Mood', 'Memorable'],
+		'including': ['Shared With', ['Family', 'Significant other']],
+		'notes': ['Notes', 'Life changing']
 	},
 	'memory3': {
-		'occasion': ['Occasion', ''],
-		'date': [],
-		'importance': [],
-		'moodError': [],
-		'including': [],
-		'notes': []
+		'occasion': ['Occasion', 'Bought house'],
+		'date': ['Date', '2013-02-07'],
+		'importance': ['Importance', '75'],
+		'mood': ['Mood', 'Memorable'],
+		'including': ['Shared With', ['Significant other']],
+		'notes': ['Notes', 'What an amazing event']
 	},
 	'memory4': {
-		'occasion': ['Occasion', ''],
-		'date': [],
-		'importance': [],
-		'moodError': [],
-		'including': [],
-		'notes': []
+		'occasion': ['Occasion', 'Edit me'],
+		'date': ['Date', '2013-04-30'],
+		'importance': ['Importance', '25'],
+		'mood': ['Mood', 'Forgettable'],
+		'including': ['Shared With', ['Other']],
+		'notes': ['Notes', 'What an amazing event']
 	}
 
 };

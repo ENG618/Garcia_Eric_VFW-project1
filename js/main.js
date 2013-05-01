@@ -18,6 +18,15 @@ window.addEventListener('DOMContentLoaded', function(){
 		return elementRequested;
 	}
 
+	// Load default data from json.js
+	function loadDefault () {
+		for(var x in json){
+			var id	= Math.floor(Math.random()*12345678);
+			localStorage.setItem(id, JSON.stringify(json[x]));
+		}
+		alert('Your defaults have been loaded');
+	}
+
 	// Create mood field element and populate with options
 	function creatMoodField(){
 		var formTag = document.getElementsByTagName('form'),
@@ -79,7 +88,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		memory.occasion 		= ['Occasion:', $('occasion').value];
 		memory.date 			= ['Date:', $('date').value];
 		memory.importance 		= ['Importance:', $('importance').value];
-		memory.moodError		= ['Mood:', $('mood').value];
+		memory.eventMood		= ['Mood:', $('mood').value];
 		memory.including	 	= ['Shared With:', getCheckedValues()];
 		memory.notes 			= ['Notes:', $('notes').value];
 		// Save data to local Storage
@@ -92,6 +101,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	function loadData(){
 		if(localStorage.length === 0){
 			alert('There are no memories to display');
+			loadDefault();
 		}else{
 			toggleNav('on');
 			// Load from local storage

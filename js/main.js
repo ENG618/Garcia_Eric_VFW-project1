@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', function(){
 	function $(x){
 		var elementRequested = document.getElementById(x);
 		return elementRequested;
-	};
+	}
 
 	// Create mood field element and populate with options
 	function creatMoodField(){
@@ -31,22 +31,23 @@ window.addEventListener('DOMContentLoaded', function(){
 			makeOption.setAttribute('value', optText);
 			makeOption.innerHTML = optText;
 			makeMood.appendChild(makeOption);
-		};
+		}
 		moodLi.appendChild(makeMood);
-	};
+	}
 
-	//Get checked values
+	// Get checked values
 	function getCheckedValues(){
 		var checkboxes = $('form').sharedWith,
 			checkedValues = [];
 		for (i=0; i<checkboxes.length; i++){
 			if(checkboxes[i].checked ){
 				checkedValues.push(checkboxes[i].value);
-			};
-		};
+			}
+		}
 		return checkedValues;
-	};
+	}
 
+	// Change nav links when on different pages
 	function toggleNav(x){
 		switch(x){
 			case 'on':
@@ -64,28 +65,28 @@ window.addEventListener('DOMContentLoaded', function(){
 				break;
 			default:
 				return false;
-		};
-	};
+		}
+	}
 
 	// Save Data Functions (Store memory button)
 	function saveForm(key){
 		if(!key){
-			var id 	= Math.floor(Math.random()*12345678);
+			var id	= Math.floor(Math.random()*12345678);
 		}else{
 			id = key;
-		};
+		}
 		var memory 				= {};
 		memory.occasion 		= ['Occasion:', $('occasion').value];
 		memory.date 			= ['Date:', $('date').value];
 		memory.importance 		= ['Importance:', $('importance').value];
-		memory.mood 			= ['Mood:', $('mood').value];
+		memory.moodError		= ['Mood:', $('mood').value];
 		memory.including	 	= ['Shared With:', getCheckedValues()];
 		memory.notes 			= ['Notes:', $('notes').value];
 		// Save data to local Storage
 		localStorage.setItem(id, JSON.stringify(memory));
 		alert('Your memory is safe!!');
 		window.location.reload();
-	};
+	}
 
 	// Load Data Function
 	function loadData(){
@@ -117,11 +118,11 @@ window.addEventListener('DOMContentLoaded', function(){
 					var optSubText = obj[n][0]+' '+obj[n][1];
 					makeSubLi.innerHTML = optSubText;
 					makeSubList.appendChild(linksLi);
-				};
-				makeItemLinks(localStorage.key(i), linksLi);  
-			};
-		};
-	};
+				}
+				makeItemLinks(localStorage.key(i), linksLi);
+			}
+		}
+	}
 
 	// Clear Local Storage Function
 	function clearData(){
@@ -137,8 +138,8 @@ window.addEventListener('DOMContentLoaded', function(){
 			}else{
 				alert('All your memories are still safe!!');
 			}
-		};
-	};
+		}
+	}
 
 	// Function creates links to edit or delete items from local storage
 	function makeItemLinks(key, linksLi){
@@ -163,7 +164,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		deleteMemLink.addEventListener('click', deleteMem);
 		deleteMemLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteMemLink);
-	};
+	}
 
 	// Edit individual memory in local storage
 	function editMem(){
@@ -185,21 +186,21 @@ window.addEventListener('DOMContentLoaded', function(){
 				for(var i=0; i<checkboxes.length; i++){
 					if(checkboxes[i].value === y[x]){
 						checkboxes[i].setAttribute('checked', 'checked');
-					};
-				};
-			};
-		};
+					}
+				}
+			}
+		}
 
 		// Remove save event listener
 		save.removeEventListener('click', saveForm);
 
 		// Change save button to edit button
-		save.value = 'Edit Memory'; 
+		save.value = 'Edit Memory';
 		var editSave = save;
 		// Save key value of memory selected to edit so it can be overwrote by the new info.
 		editSave.addEventListener('click', validate);
 		editSave.key = this.key;
-	};
+	}
 
 	// Delete individual memory
 	function deleteMem(){
@@ -210,8 +211,8 @@ window.addEventListener('DOMContentLoaded', function(){
 			window.location.reload();
 		}else{
 			alert('Your memory is intact!!');
-		};
-	};
+		}
+	}
 
 	// Validate form fields function
 	function validate(e){
@@ -233,7 +234,7 @@ window.addEventListener('DOMContentLoaded', function(){
 			var ocationError = 'Whats a memory with out an Occasion?';
 			getOccasion.style.border = '1px solid red';
 			errorMsgAry.push(ocationError);
-		};
+		}
 
 		// // Date validation
 		// if(){
@@ -241,11 +242,11 @@ window.addEventListener('DOMContentLoaded', function(){
 		// };
 
 		// Mood validation
-		if(getMood.value === '--Choose Mood--' ){ 
+		if(getMood.value === '--Choose Mood--' ){
 			var moodError = 'Setting the mood makes memory better!!';
 			getMood.style.border = '1px solid red';
 			errorMsgAry.push(moodError);
-		};
+		}
 
 		// If there are error messages display on screen
 		if(errorMsgAry.length >= 1){
@@ -253,15 +254,15 @@ window.addEventListener('DOMContentLoaded', function(){
 				var txt = document.createElement('li');
 				txt.innerHTML = errorMsgAry[i];
 				errorMsg.appendChild(txt);
-			};
+			}
 			e.preventDefault();
 			return false;
 		}else{
 			// If no errors save memory
 			// Send key value with function call. Passed through editSave event listener as a property
 			saveForm(this.key);
-		};
-	};
+		}
+	}
 
 	// Display/Clear data & Submit links
 	loadSavedData.addEventListener('click', loadData);

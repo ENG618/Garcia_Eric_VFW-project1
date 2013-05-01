@@ -97,6 +97,15 @@ window.addEventListener('DOMContentLoaded', function(){
 		window.location.reload();
 	}
 
+	// Load image for category selected
+	function loadImg (makeSubList, moodName) {
+		var imgLi = document.createElement('li');
+		makeSubList.appendChild(imgLi);
+		var newImg = document.createElement('img');
+		var setSrc = newImg.setAttribute('src',  'img/'+ moodName +'.png');
+
+	}
+
 	// Load Data Function
 	function loadData(){
 		if(localStorage.length === 0){
@@ -122,6 +131,7 @@ window.addEventListener('DOMContentLoaded', function(){
 				// Creating another list for each memory
 				var makeSubList = document.createElement('ul');
 				makeLi.appendChild(makeSubList);
+				loadImg(makeSubList, obj.mood[1]);
 				for (var n in obj){
 					var makeSubLi = document.createElement('li');
 					makeSubList.appendChild(makeSubLi);

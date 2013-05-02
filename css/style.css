@@ -9,13 +9,13 @@ Project2 add style
 }
 
 html {
-	background-color: #8c7f56;
+	background-color: #C22D2D;
 }
 
 h1 {
 	width: 220px;
 	text-align: center;
-	color: #CCAB72;
+	color: #83B03C;
 	margin: 5 auto;
 }
 
@@ -28,7 +28,7 @@ nav {
 
 body {
 	width: 250px;
-	background-color: #fff9f1;
+	background-color: #F7DB86;
 	padding: 5px;
 	margin: 5px;
 }
@@ -74,7 +74,7 @@ footer {
 h1.mainPage {
 	width: 100px;
 	text-align: center;
-	color: #CCAB72;
+	color: #BD8620;
 	margin: 5px;
 	padding: 5px;
 }

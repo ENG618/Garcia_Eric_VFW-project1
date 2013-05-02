@@ -5,7 +5,7 @@
 window.addEventListener('DOMContentLoaded', function(){
 
 	//Variables
-	var eventMood = ['--Choose Mood--', 'Forgettable', 'Fun', 'Memorable', 'Sad'];
+	var eventMood = ['--Choose Mood--', 'Fun', 'Memorable', 'Sad'];
 	var	sharedWith;
 	var loadSavedData = $('loadSavedData');
 	var clearSavedData = $('clearSavedData');
@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		makeSubList.appendChild(imgLi);
 		var newImg = document.createElement('img');
 		var setSrc = newImg.setAttribute('src',  'img/'+ moodName +'.png');
-
+		imgLi.appendChild(newImg);
 	}
 
 	// Load Data Function
@@ -131,7 +131,7 @@ window.addEventListener('DOMContentLoaded', function(){
 				// Creating another list for each memory
 				var makeSubList = document.createElement('ul');
 				makeLi.appendChild(makeSubList);
-				loadImg(makeSubList, obj.mood[1]);
+				loadImg(makeSubList, obj.eventMood[1]);
 				for (var n in obj){
 					var makeSubLi = document.createElement('li');
 					makeSubList.appendChild(makeSubLi);
@@ -198,7 +198,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		$('occasion').value = memory.occasion[1];
 		$('date').value = memory.date[1];
 		$('importance').value = memory.importance[1];
-		$('mood').value = memory.mood[1];
+		$('mood').value = memory.eventMood[1];
 		var checkboxes = $('form').sharedWith;
 		var y = memory.including[1];
 		for(var x=0; x<y.length; x++){

@@ -3,9 +3,12 @@ Eric Garcia
 VFW 1304
 Project2 add style
  */
+
+
+
 * {
-	font-family: helvetica, times, arial;
-	font-size: 10px;
+	font-family: RobotoRegular, helvetica, times, arial;
+	font-size: 12px;
 }
 
 html {
@@ -13,10 +16,11 @@ html {
 }
 
 h1 {
-	width: 220px;
+	/*width: 220px;*/
 	text-align: center;
 	color: #83B03C;
-	margin: 5 auto;
+	margin: 5px auto;
+	padding: 10px;
 }
 
 nav {
@@ -27,11 +31,13 @@ nav {
 }
 
 body {
-	width: 250px;
+	position: relative;
+	/*width: 250px;*/
 	background-color: #F7DB86;
-	padding: 5px;
+	margin: 0, auto;
+/*	padding: 5px;
 	margin: 5px;
-}
+*/}
 
 legend {
 	font-weight: bold;
@@ -39,8 +45,8 @@ legend {
 }
 
 form {
-	margin: 2px;
-	padding: 2px;
+	position: relative;
+	margin: 0, auto;
 }
 
 ul {
@@ -56,10 +62,9 @@ line-height: 1em;
 	padding: 5px;
 }
 
-input#save {
-	/*	font-weight:  bold;
-	
-	 */
+save {
+		font-family: RobotoBold;
+		color: red;
 }
 
 button {
@@ -71,8 +76,7 @@ footer {
 	margin-top: 20px;
 }
 
-h1.mainPage {
-	width: 100px;
+/*h1.mainPage {
 	text-align: center;
 	color: #BD8620;
 	margin: 5px;
@@ -80,16 +84,19 @@ h1.mainPage {
 }
 
 body.mainPage {
+	position: relative;
+	margin: 0, auto;
 	width: 120px;
 }
 
 p.mainPage {
-	width: 100px;
+	position: relative;
+	margin: 0, auto;
 	margin: 5px;
 	padding: 5px;
 }
-
+*/
 #errors {
 	color: red;
-	font-weight: bold;
+	font-family: RobotoBold;
 }

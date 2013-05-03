@@ -5,9 +5,9 @@
 	<head>
 		<!-- 	Eric Garcia
 				VFW 1304
-				4/11/13
+				5/1/13
 				Web App Part 4
-				App launch page  -->
+				Search page  -->
 		<!-- Character Set Meta -->
 		<meta charset="utf-8">
 		<meta name="discription" content="My first web app using HTML5" />
@@ -28,10 +28,22 @@
 
 	<!-- body tag -->
 	<body>
-		
-		<!-- Page Content Lives Here -->
-		<p>Never forget another important memory!! Simply upload them here and save them in your very own <q>Memory Vault</q>!!</p>
-		<button type="button"><a href="additem.html">Create a Memory</a></button>
+		<nav>
+			<a href='additem.html' id='loadSavedData'>Recall Memories</a><br>
+			<a href='#' id='clearSavedData'>Erase All Memories</a><br>
+			<a href='additem.html' id='addNewMemory' style='display:none'>Add New Memory</a><br>
+			<a href='search.html' id='search'>Search</a>
+		</nav>
+
+		<form action='#' method='post' id='searchForm'>
+			<fieldset>
+				
+			</fieldset>
+			<button type="button" id='searchBtn'>Search</button>
+		</form>
 		<footer>Created by: <a href="https://plus.google.com/u/0/117454855184907306981/posts">Eric Garcia</a></footer>
+		<script src='js/json.js' type='text/javascript'></script>
+		<script src='js/main.js' type='text/javascript'></script>
 	</body>
 </html>
+

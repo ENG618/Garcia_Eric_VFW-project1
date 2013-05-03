@@ -5,27 +5,28 @@
 		<!-- 	Eric Garcia
 				VFW 1304
 				4/11/13
-				Web App Part 1
+				Web App Part 4
 				App addItem page  -->
 		<!-- Character Set Meta -->
 		<meta charset='utf-8' />
 		<meta name='discription' content='My first web app using HTML5' />
 		<meta name='keyword' content='html5, web app, Full Sail, FVW' />
 		<meta name='robots' content'index, follow' />
-		<meta name='viewport' content='user-scalable-no', 'width=divice-width' />
+		<meta name="viewport" content="width=divice-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<!-- <meta name='viewport' content='target-densitydpi=device-dpi' /> -->
 		<!-- Page Title -->
 		<title>Memory Vault</title>
 		<!-- Call CSS File -->
-		<link href='css/style.css' rel='stylesheet' type='text/css' />
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
 		<link href='font/roboto.css' rel='stylesheet' type='text/css' />
 	</head>
 	<body>
-		<h1>New Memory</h1>
+		<h1><a href='index.html'>New Memory</a></h1>
 		<nav>
 			<a href='#' id='loadSavedData'>Recall Memories</a><br>
-			<a href='#' id='clearSavedData'>Erase All Memories</a>
-			<a href='additem.html' id='addNewMemory' style='display:none'>Add New Memory</a>
+			<a href='#' id='clearSavedData'>Erase All Memories</a><br>
+			<a href='additem.html' id='addNewMemory' style='display:none'>Add New Memory</a><br>
+			<a href='search.html' id='search'>Search</a>
 		</nav>
 		<form action='#' method='post' id='form'>
 				<legend>Important Memory</legend>
@@ -48,7 +49,7 @@
 				<li><label for='notes'>Notes</label></li><textarea id='notes'>Describe this occasion here...</textarea>
 				<li type='hidden' value='someValue'></li>
 			</ul>
-			<input type='button' id='save' value='Add Memory to Vault!!'/>
+			<button type='button' id='save' />Add Memory to Vault!!</button>
 		</form>
 		<footer>Created by: <a href="https://plus.google.com/u/0/117454855184907306981/posts">Eric Garcia</a></footer>
 		<!-- Call JavaScript File -->

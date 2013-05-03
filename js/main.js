@@ -284,6 +284,18 @@ window.addEventListener('DOMContentLoaded', function(){
 		}
 	}
 
+/*	function search () {
+		// No selections
+		if groups;
+
+		// Search by mood only
+
+		// Search by text only
+
+		// Search by mood and text
+
+	}
+*/
 	// Display/Clear data & Submit links
 	loadSavedData.addEventListener('click', loadData);
 	clearSavedData.addEventListener('click', clearData);
